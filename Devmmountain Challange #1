@@ -1,0 +1,44 @@
+//Calculate the taxes and add taxes to total price.
+function calculateTaxes(price, quantity) {
+  var salesTax = .10;
+  var totalPrice;
+  // Only change code below this line
+  var totalBeforeTaxes = price * quantity;
+  var totalAfterTaxes = totalBeforeTaxes * salesTax;
+  totalPrice = totalBeforeTaxes + totalAfterTaxes;
+  
+  // Only change code above this line
+  return totalPrice;
+}
+
+// Change the inputs below to test your code
+calculateTaxes(1,10);
+
+//Calculate the correct percentage
+
+function scoreTest(correct, questions) {
+  var percent;
+  // Only change code below this line
+  var counter = 100/questions
+  percent = counter * correct;
+  
+  // Only change code above this line
+  return percent;
+}
+
+// Change the inputs below to test your code
+scoreTest(18,20);
+
+//Calculate Fahrenheit
+
+function convertToF(celsius) {
+  var fahrenheit;
+  // Only change code below this line
+  fahrenheit = celsius * 9/5 + 32;
+  
+  // Only change code above this line
+  return fahrenheit;
+}
+
+// Change the inputs below to test your code
+convertToF(30);
