@@ -1,0 +1,85 @@
+//Test Scores
+function scoreTest(correct, questions) {
+  var percent;
+  // Only change code below this line
+  
+  
+  // Only change code above this line
+  return percent;
+}
+
+// Change the inputs below to test your code
+scoreTest(18,20);
+
+
+//Convert to Celcius to Fahrenheit
+function convertToF(celsius) {
+  var fahrenheit;
+  // Only change code below this line
+  
+  
+  // Only change code above this line
+  return fahrenheit;
+}
+
+// Change the inputs below to test your code
+convertToF(30);
+
+
+//Calculate a price of your purchase after taxes
+function calculateTaxes(price, quantity) {
+  var salesTax = .10;
+  var totalPrice;
+  // Only change code below this line
+  
+  
+  // Only change code above this line
+  return totalPrice;
+}
+
+// Change the inputs below to test your code
+calculateTaxes(1,10);
+
+
+//Cut Values Program
+
+function slasher(arr, howMany) {
+  // it doesn't always pay to be first
+  return arr.slice(howMany);
+}
+
+slasher([1, 2, 3], 2);
+
+
+//WordBlanks Program
+function wordBlanks(myNoun, myAdjective, myVerb, myAdverb) {
+  var result = "";
+  // Your code below this line
+  result = myNoun + ", " + myAdjective + ", " + myVerb + ", " + myAdverb;
+
+  // Your code above this line
+  return result;
+}
+
+// Change the words here to test your function
+wordBlanks("dog", "big", "ran", "quickly");
+
+
+
+//Reverse a string..
+var array = [];
+function reverseString(str) {
+  array = str.split("").reverse().join('');
+  return array;
+}
+
+reverseString("hello");
+
+//Find Waldo Program
+
+function findWaldo(str) {
+  var waldoPosition;
+  // Code below here
+  waldoPosition = str.indexOf('Waldo');
+  return waldoPosition;
+}
