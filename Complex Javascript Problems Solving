@@ -1,0 +1,251 @@
+function truncateString(str, num) {
+  var truncatedFactor = 3;
+  // Clear out that junk in your trunk
+  //Use a if/else statement to see the possible outcome of the parameters
+  if (str.length > num && num > truncatedFactor) {
+    //If the length of the string is more than the num parameterand the num parameter is more than 3
+    //Then slice the string to the num parameter subtracted by the truncatedFactor
+    str = str.slice(0, num - truncatedFactor) + '...';
+    //Return string
+    return str;
+  } else if (num <= truncatedFactor) {
+    //Use a else if statement if the num parameter is less than or equal to three than slice the string
+    //by the num parameter subtracted by the str.length. The less value - more value
+    str = str.slice(0, num - str.length) + '...';
+    //REturn string.
+    return str;
+  } else {
+    //Use a else statement if the num parameter or string.length fulfills neither condition or
+    //if their is only one argument invoked on the function than just slice the string by its length
+    //+ 3
+    str = str.slice(0, str.length + 3);
+    //return string.
+    return str;
+  }
+}
+
+truncateString('A-tisket a-tasket A green and yellow basket', 11);
+truncateString('Absolutely Longer', 2);
+
+//Target CHallange
+
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+  //First check if the string length is more than the target length in order for the substr method to     //be valid
+  if (str.length > target.length) {
+    //Use the substring method on the string length subtracted from the target length.
+    str = str.substr(str.length - target.length);
+    //If the string is equal to the target than return true
+    if (str == target) {
+      return true;
+    } else {
+      //Else return false
+      return false;
+    }
+  }
+  //Return false if the string length is less than the target length.
+  return false;
+}
+
+confirmEnding('Bastian', 'n');
+
+//The JSON collection program using bracket notaion
+
+// Setup
+var collection = {
+  2548: {
+    album: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name'],
+  },
+  2468: {
+    album: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette'],
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: [],
+  },
+  5439: {
+    album: 'ABBA Gold',
+  },
+};
+// Keep a copy of the collection for tests
+var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+// Only change code below this line
+function updateRecords(id, prop, value) {
+  //If the value is not a empty string, and the prop argument is not equal to 'tracks'
+  if (value !== '' && prop !== 'tracks') {
+    //Equal the property to the value argument
+    collection[id][prop] = value;
+    //Else if value is not an empty string, prop argument equals to 'tracks' and the collection[id]
+    //does not have the 'tracks' property.
+  } else if (
+    value !== '' &&
+    prop === 'tracks' &&
+    !collection[id].hasOwnProperty('tracks')
+  ) {
+    //Give the 'tracks' property a empty array to equal multiple values
+    collection[id][prop] = [];
+    //Push the value at the end of the 'tracks' property
+    collection[id][prop].push(value);
+    //Else if value is not empty and prop argument equals to 'tracks' and collection[id] has the
+    //'tracks' property.
+  } else if (
+    value !== '' &&
+    prop === 'tracks' &&
+    collection[id].hasOwnProperty('tracks')
+  ) {
+    //Add value to the end of the 'tracks' array
+    collection[id][prop].push(value);
+    //Else delete the property invoked by the prop argument.
+  } else {
+    delete collection[id][prop];
+  }
+
+  return collection;
+}
+
+// Alter values below to test your code
+updateRecords(5439, 'artist', 'ABBA');
+updateRecords(5439, 'tracks', 'Take a Chance on Me');
+
+
+//Lookup function.
+
+//Setup
+var contacts = [
+    {
+        "firstName": "Akira",
+        "lastName": "Laine",
+        "number": "0543236543",
+        "likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+    {
+        "firstName": "Harry",
+        "lastName": "Potter",
+        "number": "0994372684",
+        "likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+    {
+        "firstName": "Sherlock",
+        "lastName": "Holmes",
+        "number": "0487345643",
+        "likes": ["Intriguing Cases", "Violin"]
+    },
+    {
+        "firstName": "Kristian",
+        "lastName": "Vos",
+        "number": "unknown",
+        "likes": ["Javascript", "Gaming", "Foxes"]
+    }
+];
+
+
+function lookUpProfile(firstName, prop){
+// Only change code below this line
+  //Declare counter variables which will be boolean values
+  var isContact;
+  var isProperty;
+  //Declare a for loop which will loop through a contacts.collection based on it's length property
+  //Iterate the counter by 1
+  for(var i = 0; i < contacts.length; i++)
+  {
+    //If the firstName parameter is equal to the firstName property, therefore the isContact counter 
+    //variable to true;
+    if(firstName === contacts[i]['firstName'])
+    {
+      isContact = true;
+      //Check if the contact has the property, and if it does the isProperty counter variable is 
+      //is true and returns the property and breaks the for loop.
+      if(contacts[i].hasOwnProperty(prop))
+      {
+        isProperty = true;
+        return contacts[i][prop];
+      }
+      //If the loop doesn't find the property the counter variable called isProperty becomes false.
+      else 
+      {
+      isProperty = false;
+      }
+  }
+  //After the loop determine what will be returned based on the counter variables boolean values/
+  if(!isContact) {
+    return "No such contact";
+  } else {
+    return "No such property";
+  }
+}
+// Only change code above this line
+
+// Change these values to test your function
+lookUpProfile("Akira", "likes");
+
+//Longest Word program
+
+function findLongestWord(str) {
+  //Split the string by a space, and assign to a array variable
+  var splitStr = str.split(' ');
+  //Have a counter to determine the longest word.
+  var longestWord = 0;
+  //Use a forloop to iterate over the split string array
+  for(var i = 0; i < splitStr.length; i++) {
+    //If the length is more than the longestWord
+    if(splitStr[i].length > longestWord) {
+      //Then assign the longestWord to the current string length
+      longestWord = splitStr[i].length;
+    }
+  }
+  //Return the longest word.
+  return longestWord;
+}
+
+findLongestWord("The quick brown fox jumped over the lazy dog");
+
+//Match the reverse string program
+function palindrome(str) {
+  // Good luck!
+  //Invoke the string reversed variable
+  var stringReversed;
+  //Replace the strings whitespaces, and all punctuation with a empty string
+  str = str.replace(/[^\w]/g, '').replace(/\_/g, "").replace(/\W/g, "");
+  //Make the string lowercase
+  str = str.toLowerCase();
+  //Make the string reversed array = string sliced by a character
+  stringReversed = str.slice(",").split("");
+  //Reverse the array and join it by a string
+  stringReversed = stringReversed.reverse().join("");
+  //If the string reversed = the string return true else returns false
+  if(stringReversed === str)
+  {
+     return true; 
+  } 
+    return false;
+}
+
+palindrome("eye");
+palindrome("not a palindrome");
+palindrome("0_0 (: /-\ :) 0-0");
+
+//Callback method program
+var falseyValues = [false, null, 0, "", undefined, NaN];
+//Declare a function to use as a callback.
+function falsey(value) {
+  //It takes an argument, but it can be optional.
+  //Boolean keyword converts it to a boolean value to determine if it is a false value.
+  return Boolean(value);
+}
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  //Use the filter array method to filter out the false values from the array, and equal the result to the array.
+  arr = arr.filter(falsey);
+  //Return the array.
+  return arr;
+}
+
+bouncer([7, "ate", "", false, 9]);
+bouncer([1, null, NaN, 2, undefined]);
+bouncer([false, null, 0, NaN, undefined, ""]);
